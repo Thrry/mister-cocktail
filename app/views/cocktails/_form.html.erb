@@ -1,0 +1,21 @@
+
+<%= form_for @cocktail do |f| %>
+  Ingrédients:
+  <ul>
+    <%= f.fields_for :doses do |doses_form| %>
+      <li>
+        <%= doses_form.label :amount %>
+        <%= doses_form.text_field :amount %>
+        <ul>
+          <%= f.fields_for :ingredients do |ingredients_form| %>
+            <li>
+              <%= ingredients_form.label :name %>
+              <%= ingredients_form.text_field :name %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+

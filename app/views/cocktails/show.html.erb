@@ -1,0 +1,12 @@
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title"><%= @cocktail.name %></h2>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @cocktail.doses.each do |dose| %>
+          <li><%= dose.amount %> <%= dose.ingredient.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>

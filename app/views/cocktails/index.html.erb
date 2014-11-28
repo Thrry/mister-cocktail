@@ -1,0 +1,24 @@
+<h1>Cocktails</h1>
+<p>Voici tous nos cocktails:</p>
+
+
+  <% @cocktails.each do |cocktail| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title"><%= cocktail.name %></h2>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% cocktail.doses.each do |dose| %>
+          <li><%= dose.amount %> <%= dose.ingredient.name %></li>
+          <% end %>
+            <%=link_to "more", cocktail_path(cocktail), class: "btn btn-large btn-default" %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+
+
+  <%=link_to "Write a new cocktail", new_cocktail_path, class: "btn btn-large btn-default" %>
+
