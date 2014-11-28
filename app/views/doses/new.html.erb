@@ -1,2 +1,8 @@
-<h1>Doses#new</h1>
-<p>Find me in app/views/doses/new.html.erb</p>
+<h2>Ajouter un ingrédient pour <%= link_to @cocktail.name, cocktail_path(@cocktail) %></h2>
+
+<%= simple_form_for(@dose, url: cocktail_doses_path) do |f| %>
+  <%= f.input :amount %>
+  <%= f.input :ingredient_id, collection: @ingredients %>
+
+  <%= f.submit %>
+<% end %>

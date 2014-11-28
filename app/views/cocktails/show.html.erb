@@ -10,3 +10,10 @@
         </ul>
       </div>
     </div>
+
+    <h2><%= @cocktail.name %></h2>
+
+
+<%= link_to 'Ajouter un ingredient', new_cocktail_dose_path(@cocktail)  %>
+
+<%= link_to 'Revenir à la liste', cocktails_path  %>
