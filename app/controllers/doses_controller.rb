@@ -1,51 +1,31 @@
+
 class DosesController < ApplicationController
-
-  # class ReviewsController < ApplicationController
-  #   before_action :set_restaurant
-
-  #   def new
-  #     @review = Review.new
-  #   end
-
-  #   def create
-  #     @review = Review.new(review_params)
-  #     @review.restaurant = @restaurant
-  #     if @review.save
-  #       redirect_to restaurant_path(@restaurant)
-  #     else
-  #       render :new
-  #     end
-  #   end
-
-  # private
-
-  #   def set_restaurant
-  #     @restaurant = Restaurant.find(params[:restaurant_id])
-  #   end
-
-  #   def review_params
-  #     params.require(:review).permit(:content, :rating)
-  #   end
-  # end
-
-  def index
-  end
-
-  def show
-  end
+  before_action :get_cocktail
 
   def new
+    @ingredients = Ingredient.all
+    @dose = Dose.new(cocktail: @cocktail)
   end
 
   def create
+    @dose = Dose.new(dose_params)
+    @dose.cocktail = @cocktail
+
+    if @dose.save
+      redirect_to cocktail_path(@cocktail)
+    else
+      render :new
+    end
   end
 
-  def edit
+private
+
+  def dose_params
+    params.require(:dose).permit(:amount, :ingredient_id)
   end
 
-  def update
+  def get_cocktail
+    @cocktail = Cocktail.find(params[:cocktail_id])
   end
 
-  def destroy
-  end
 end

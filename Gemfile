@@ -28,13 +28,17 @@ gem 'spring',        group: :development
 
 group :development do
   gem 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 
 ruby '2.1.2'
 gem 'rails_12factor', group: :production
 
+gem 'simple_form'
 
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
