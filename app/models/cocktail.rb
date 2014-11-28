@@ -1,12 +1,9 @@
 class Cocktail < ActiveRecord::Base
-
-# A cocktail has many doses
-has_many :doses, dependent: :destroy
-
-# A cocktail has many ingredients through doses
-has_many :ingredients, through: :doses
-
-# A cocktail must have a name
-validates :name, presence: true
-
+  has_many :doses, dependent: :destroy
+  has_many :ingredients, through: :doses
+  validates_presence_of :name
+  has_attached_file :picture,
+    styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment_content_type :picture,
+    content_type: /\Aimage\/.*\z/
 end

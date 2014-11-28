@@ -5,13 +5,13 @@
       <div class="panel-body">
         <ul>
           <% @cocktail.doses.each do |dose| %>
+          <%= image_tag @cocktail.picture.url(:thumb) %>
+          <%= image_tag @cocktail.picture.url %>
           <li><%= dose.amount %> <%= dose.ingredient.name %></li>
           <% end %>
         </ul>
       </div>
     </div>
-
-    <h2><%= @cocktail.name %></h2>
 
 
 <%= link_to 'Ajouter un ingredient', new_cocktail_dose_path(@cocktail)  %>
